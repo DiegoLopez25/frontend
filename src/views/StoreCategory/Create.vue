@@ -28,6 +28,10 @@
           </router-link>
         </div>
       </div>
+      <div :class="`alert alert-${notification.type} mt-5`" v-if="openAlert">
+        <button type="button" class="close" @click="openAlert = false">×</button>
+        {{ notification.message }}
+      </div>
       <div class="row">
         <div class="col-12">
           <form v-on:submit.prevent="submitForm">
@@ -50,12 +54,6 @@
                     {{ vErrors.nombre }}
                   </span>
                 </div>
-
-                <div :class="`alert alert-${notification.type} mt-5`" v-if="openAlert">
-                  <button type="button" class="close" @click="openAlert = false">×</button>
-                  {{ notification.message }}
-                </div>
-
               </div>
               <div class="card-footer">
                 <button type="submit" class="btn btn-success">
@@ -116,7 +114,6 @@ export default {
               this.notification.message = 'Ocurrió un error al intentar guardar el registro';
             }
           })
-
     }
   },
   beforeUnmount() {

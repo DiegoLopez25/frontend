@@ -1,20 +1,19 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import MainLayout from "../layouts/MainLayout.vue"
 import Dashboard from "../views/DashboardView.vue"
-import CategoriaView from "../views/CategoriaViews/CategoriaView.vue"
-import NuevaCategoriaView from "../views/CategoriaViews/NuevaCategoriaView.vue"
-import UsuarioView from "../views/UsuarioViews/UsuarioView.vue"
-import NuevoUsuarioView from "../views/UsuarioViews/NuevoUsuarioView.vue"
-import EditarUsuarioView from "../views/UsuarioViews/EditarUsuarioView.vue"
-import TiendaView from "../views/TiendaViews/TiendaView.vue";
-import EditarTiendaView from "../views/TiendaViews/EditarTiendaView.vue";
-import NuevaTiendaView from "../views/TiendaViews/NuevaTiendaView.vue";
+
 
 //StoreCategory
 import StoreCategoryIndex from "../views/StoreCategory/Index.vue";
 import StoreCategoryCreate from "../views/StoreCategory/Create.vue";
 import StoreCategoryEdit from "../views/StoreCategory/Edit.vue";
 import StoreCategoryShow from "../views/StoreCategory/Show.vue";
+
+//User
+import UserCreate from "../views/User/Create.vue";
+import UserIndex from "../views/User/Index.vue";
+import UserEdit from "../views/User/Edit.vue";
+import UserShow from "../views/User/Edit.vue"
 
 
 const router = createRouter({
@@ -40,41 +39,6 @@ const router = createRouter({
                         title: 'Dashboard',
                     }
                 },
-
-                {
-                    path: '/usuarios',
-                    name: 'usuarios',
-                    component: UsuarioView
-                },
-                {
-                    path: '/usuarios/nuevo-usuario',
-                    name: 'nuevo-usuario',
-                    component: NuevoUsuarioView
-                },
-                {
-                    path: '/usuarios/editar-usuario',
-                    name: 'editar-usuario',
-                    component: EditarUsuarioView
-                },
-
-                {
-                    path: '/tiendas',
-                    name: 'tiendas',
-                    component: TiendaView
-                },
-
-                {
-                    path: '/tiendas/editar-tienda',
-                    name: 'editar-tienda',
-                    component: EditarTiendaView
-                },
-
-                {
-                    path: '/tiendas/nueva-tienda',
-                    name: 'nueva-tienda',
-                    component: NuevaTiendaView
-                },
-
                 //Store categories
                 {
                     path: '/categoria-tienda',
@@ -99,6 +63,31 @@ const router = createRouter({
                     name: 'StoreCategoryShow',
                     component: StoreCategoryShow,
                     meta: {title: 'Detalles de la Categoría de Tienda'}
+                },
+                //Users
+                {
+                    path: '/usuarios',
+                    name:'UserIndex',
+                    component:UserIndex,
+                    meta: {title: 'Usuarios'}
+                },
+                {
+                    path: '/usuarios/crear',
+                    name:'UserCreate',
+                    component: UserCreate,
+                    meta: {title: 'Crear Usuario'}
+                },
+                {
+                    path: '/usuarios/:id/editar',
+                    name:'UserEdit',
+                    component: UserEdit,
+                    meta: {title: 'Editar Usuario'}
+                },
+                {
+                    path: '/usuarios/detalles/:id',
+                    name:'UserShow',
+                    component: UserShow,
+                    meta: {title: 'Detalles del Usuario'}
                 },
             ]
         },

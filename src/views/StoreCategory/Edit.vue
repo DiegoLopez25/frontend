@@ -31,7 +31,7 @@
       <div class="row">
         <div class="col-12">
           <form v-on:submit.prevent="submitForm">
-            <div class="card card-outline card-success">
+            <div class="card card-outline card-warning">
               <div class="card-header">
                 <h3 class="card-title">Editar Categoria</h3>
               </div>
@@ -58,8 +58,8 @@
 
               </div>
               <div class="card-footer">
-                <button type="submit" class="btn btn-success">
-                  <i class="fas fa-save"></i> {{ sending ? 'Guardando...' : 'Guardar' }}
+                <button type="submit" class="btn btn-warning">
+                  <i class="fas fa-save"></i> {{ sending ? 'Guardando...' : 'Editar' }}
                 </button>
               </div>
             </div>

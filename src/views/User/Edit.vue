@@ -17,6 +17,17 @@
           </ol>
         </div>
       </div>
+      <div class="row mb-3">
+        <div class="col-md-3 offset-md-9">
+          <router-link
+              :to="{name: 'UserIndex'}"
+              class="btn btn-secondary float-right"
+          >
+            <i class="fas fa-arrow-circle-left"></i>
+            Regresar
+          </router-link>
+        </div>
+      </div>
       <div class="row">
         <div class="col-12">
           <form action="#" method="post" id="frmCategoria">

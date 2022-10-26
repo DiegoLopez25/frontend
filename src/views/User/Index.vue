@@ -3,25 +3,23 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Categorías de Tienda</h1>
+          <h1>Usuarios</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item">
               <router-link to="/dashboard">Dashboard</router-link>
             </li>
-            <li class="breadcrumb-item active">Categorías de Tienda</li>
+            <li class="breadcrumb-item active"> Usuarios</li>
           </ol>
         </div>
       </div>
       <div class="row mb-3">
         <div class="col-md-3 offset-md-9">
           <router-link
-              to="/categoria-tienda/crear"
-              class="btn btn-success float-right"
-          ><i class="fas fa-plus"></i> Nueva Categoria
-          </router-link
-          >
+            to="/usuarios/crear"
+            class="btn btn-success float-right"
+            ><i class="fas fa-plus"></i>Nuevo Usuario</router-link>
         </div>
       </div>
       <div class="row">
@@ -34,35 +32,49 @@
             <div class="card-body table-responsive p-0">
               <table class="table table-hover text-nowrap">
                 <thead>
-                <tr>
-                  <th>Nombre</th>
-                  <th class="d-flex justify-content-end">Opciones</th>
-                </tr>
+                  <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Telefono</th>
+                    <th>e-mail</th>
+                    <th>Usuario</th>
+                    <th>Password</th>
+                    <th>Estado</th>
+                    <th class="d-flex justify-content-end">Opciones</th>
+                  </tr>
                 </thead>
                 <tbody>
-                <tr v-if="loading">
-                  <td colspan="2" class="text-center">Cargando ...</td>
-                </tr>
-                <tr v-if="notFoundRecords">
-                  <td colspan="2" class="text-center">¡No se encontraron registros!</td>
-                </tr>
-                <tr
+                  <tr v-if="loading">
+                    <td colspan="2" class="text-center">Cargando ...</td>
+                  </tr>
+                  <tr v-if="notFoundRecords">
+                    <td colspan="2" class="text-center">¡No se encontraron registros!</td>
+                  </tr>
+                  <tr
                     v-else
-                    v-for="(category, i) in storeCategories"
-                    :key="`category-${i}`"
+                    v-for="(usuario, i) in usuarios"
+                    :key="`usuario-${i}`"
                 >
-                  <td>{{ category.nombre }}</td>
+                  <td>{{ usuario.id }}</td>
+                  <td>{{ usuario.nombre }}</td>
+                  <td>{{ usuario.apellido }}</td>
+                  <td>{{ usuario.telefono }}</td>
+                  <td>{{ usuario.email }}</td>
+                  <td>{{ usuario.usuario }}</td>
+                  <td>{{ usuario.password }}</td>
+                  <td><span :class="`badge badge-${usuario.estado == 'Activo' ? 'success ':'danger'}`">{{ usuario.estado }}</span></td>
                   <td class="project-actions d-flex justify-content-end">
-                    <router-link :to="{name: 'StoreCategoryShow', params: {id: category.id}}"
+                    <router-link :to="{name: 'UserShow', params: {id: usuario.id}}"
                                  class="btn btn-secondary btn-sm">
                       <i class="fa fa-external-link-alt"></i>
                     </router-link>
-                    <router-link :to="{name: 'StoreCategoryEdit', params: {id: category.id}}"
+                    <router-link :to="{name: 'UserEdit', params: {id: usuario.id}}"
                                  class="btn btn-info btn-sm ml-1">
                       <i class="fa fa-pencil-alt"></i>
                     </router-link>
                     <a
-                        @click="selectDelete(category.id)"
+                        @click="selectDelete(usuario.id)"
                         data-toggle="modal"
                         data-target="#modal-delete"
                         class="btn btn-danger btn-sm ml-1"
@@ -73,15 +85,13 @@
                 </tr>
                 </tbody>
               </table>
-
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!--Modal para eliminar el registro-->
-    <div class="modal fade" data-backdrop="static" id="modal-delete" aria-hidden="true">
+        <!--Modal para eliminar el registro-->
+        <div class="modal fade" data-backdrop="static" id="modal-delete" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -101,12 +111,11 @@
         </div>
       </div>
     </div>
-
   </section>
 </template>
 
 <script>
-import {mapActions, mapGetters} from "vuex";
+import {mapActions,mapGetters} from "vuex";
 
 export default {
   name: "Index",
@@ -121,10 +130,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('storeCategory', ['storeCategories', 'loading', 'notFoundRecords'])
+    ...mapGetters('user', ['usuarios','loading', 'notFoundRecords'])
   },
   methods: {
-    ...mapActions('storeCategory', ['index', 'delete']),
+    ...mapActions('user', ['index','delete']),
     selectDelete(id) {
       this.selectDeletedId = id;
     },
@@ -157,6 +166,5 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
 </style>

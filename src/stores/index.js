@@ -2,6 +2,7 @@ import {createStore} from "vuex";
 
 import auth from "./modules/auth"
 import storeCategory from "./modules/storeCategory"
+import user from "./modules/user"
 
 const store = createStore({
 
@@ -25,7 +26,8 @@ const store = createStore({
 
   modules: {
     auth,
-    storeCategory
+    storeCategory,
+    user,
   }
 
 })

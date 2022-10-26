@@ -57,16 +57,19 @@
           </nav-item>
           <nav-item icon="fas fa-user" link="/usuarios">
             Usuarios
-          </nav-item>
+          </nav-item><!--
           <nav-item icon="fas fa-store" link="/tiendas">
             Tiendas
           </nav-item>
-          <nav-item icon="fas fa-store" link="/tiendas">
+          <nav-item icon="fas fa-user" link="/clientes">
             Clientes
           </nav-item>
-          <nav-item icon="fas fa-store" link="/tiendas">
+          <nav-item icon="fas fa-store" link="/pedidos">
             Pedidos
           </nav-item>
+          <nav-item icon="fas fa-store" link="/repartidores">
+            Repartidores
+          </nav-item>-->
         </ul>
       </nav>
     </div>
